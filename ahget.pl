@@ -6,6 +6,9 @@ use strict;
 my @args;
 my @urls;
 my $indexurl = "http://theamphour.libsyn.com/theamphour/size/400";
+my $usage = "Usage: $0 episode_number [another_episode_number ...]\n";
+
+die "$usage" unless @ARGV; #Print usage if there are no arguments.
 
 print "Fetching index...   ";
 my $index = `curl -sS $indexurl`; #Use cURL to fetch index webpage.
@@ -16,7 +19,7 @@ my @indexarray = split /Direct download:/, $index;
 
 #Make sure each argument is a number, and push them into an array.
 foreach my $arg (@ARGV) {
-	$arg =~ m/\d+\z/ or die "Argument $arg is not a number! $!";
+	$arg =~ m/\d+\z/ or die "Argument $arg is not a number!\n$usage";
 	push(@args, $arg);
 }
 
