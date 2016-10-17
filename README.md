@@ -1,2 +1,2 @@
 # amphour-get
-Fetches episodes of the Amp Hour podcast.
+Fetches episodes of the Amp Hour podcast from Libsyn.
